@@ -4,9 +4,9 @@ services:
   client:
     image: maven:3.6.3-jdk-11-slim
     container_name: maven
+    working_dir: /root/maven
     volumes:
-      - /c/Users/Public/repos/artifactory:/tmp/artifactory
-      - /c/Users/Public/docker-shared:/tmp/shared
+      - /c/Users/Public/repos/artifactory/maven:/root/maven
     command: /bin/bash
     tty: true
 
