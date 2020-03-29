@@ -5,10 +5,12 @@
 
 1. Security Configuration
     1. Allow anonymous access
-1. Repository > Repositories > Remote
+1. Repositories > Remote
     1. central
         1. https://repo1.maven.org/maven2/
-        1.
+1. Repositories > Virtual
+    1. public
+
 
 ## Local env
 
@@ -17,13 +19,29 @@
 
 ## Sample maven
 
+### Start docker containers
+
+    docker-compose build
+
+    docker-compose up -d
+
+
 ### Download
 
-    docker exec -it maven bash
+    docker exec -it mvn-download bash
 
     cd /root/maven/download/
 
     mvn -U dependency:resolve
+
+
+### Upload
+
+    docker exec -it mvn-upload bash
+
+    cd /root/maven/upload/
+
+
 
 
 ## References
