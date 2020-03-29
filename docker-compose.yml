@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  client:
+    image: maven:3.6.3-jdk-11-slim
+    container_name: maven
+    volumes:
+      - /c/Users/Public/repos/artifactory:/tmp/artifactory
+      - /c/Users/Public/docker-shared:/tmp/shared
+    command: bash
+    tty: true
+
+  artifactory:
+    image: docker.bintray.io/jfrog/artifactory-oss:7.2.1
+    container_name: artifactory
+    volumes:
+      - artifactory7_data:/var/opt/jfrog/artifactory
+    ports:
+      - "8081:8081"
+      - "8082:8082"
+
+volumes:
+  # Named volume
+  artifactory7_data:
