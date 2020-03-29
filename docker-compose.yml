@@ -7,7 +7,7 @@ services:
     volumes:
       - /c/Users/Public/repos/artifactory:/tmp/artifactory
       - /c/Users/Public/docker-shared:/tmp/shared
-    command: bash
+    command: /bin/bash
     tty: true
 
   artifactory:
