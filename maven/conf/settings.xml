@@ -15,7 +15,7 @@
 
   <mirrors>
     <mirror>
-      <id>id1</id>
+      <id>artifactory</id>
       <mirrorOf>*</mirrorOf>
       <name>To Local Artifactory OSS</name>
       <url>http://artifactory:8081/artifactory/all/</url>

@@ -21,8 +21,6 @@
 
     docker exec -it maven bash
 
-    cp /root/maven/conf/settings.xml /usr/share/maven/conf/
-
     cd /root/maven/download/
 
     mvn -U dependency:resolve
