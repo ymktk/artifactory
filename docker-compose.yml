@@ -1,24 +1,24 @@
 version: '3.7'
 
 services:
-  client1:
+  maven:
     build:
-      context: ./maven/download
+      context: ./maven
       dockerfile: Dockerfile
-    container_name: mvn-download
+    container_name: download
     working_dir: /root/maven
     volumes:
       - /c/Users/Public/repos/artifactory/maven:/root/maven
     tty: true
 
-  client2:
+  gradle:
     build:
-      context: ./maven/upload
+      context: ./gradle
       dockerfile: Dockerfile
-    container_name: mvn-upload
-    working_dir: /root/maven
+    container_name: upload
+    working_dir: /root/gradle
     volumes:
-      - /c/Users/Public/repos/artifactory/maven:/root/maven
+      - /c/Users/Public/repos/artifactory/gradle:/root/gradle
     tty: true
 
   artifactory:

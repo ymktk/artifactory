@@ -28,18 +28,18 @@
 
 ### Download
 
-    docker exec -it mvn-download bash
+    docker exec -it maven-download bash
 
-    cd /root/maven/download/
+    cd /root/maven/
 
     mvn -U dependency:resolve
 
 
 ### Upload
 
-    docker exec -it mvn-upload bash
+    docker exec -it gradle-upload bash
 
-    cd /root/maven/upload/
+    cd /root/gradle
 
 
 
