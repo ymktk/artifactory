@@ -39,9 +39,12 @@
 
     docker exec -it gradle-upload bash
 
-    cd /root/gradle
+    cd /root/gradle/
 
+    echo "HELLO_WORLD_ARTIFACTORY" > test-0.0.1.jar
+    ls -l test-*.jar
 
+    gradle artifactoryPublish
 
 
 ## References

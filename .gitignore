@@ -1,0 +1,4 @@
+*.jar
+.gradle
+gradle/gradle.properties
+gradle/build

@@ -1,0 +1,72 @@
+buildscript {
+
+  repositories {
+    maven {
+      url 'http://artifactory:8081/artifactory/all'
+      allowInsecureProtocol true
+    }
+  }
+
+  dependencies {
+    classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.15.1"
+  }
+}
+
+plugins {
+  id 'java-library'
+  id 'maven-publish'
+
+  // https://www.jfrog.com/confluence/display/JFROG/Gradle+Artifactory+Plugin
+  id "com.jfrog.artifactory" version "4.15.1"
+}
+
+group   = 'hoge.sample'
+version = '1.0.0'
+
+repositories {
+  maven {
+    url 'http://artifactory:8081/artifactory/all'
+    allowInsecureProtocol true
+  }
+}
+
+// https://github.com/JFrog/project-examples/tree/master/gradle-examples
+artifactory {
+  clientConfig.setIncludeEnvVars(true)
+
+  // clientConfig.info.addEnvironmentProperty('test.adding.dynVar',new java.util.Date().toString())
+
+
+  contextUrl = "http://artifactory:8081/artifactory"
+  publish {
+    repository {
+      repoKey  = "libs-release"
+      username = "${artifactory_publisher_user}"
+      password = "${artifactory_publisher_password}"
+      maven = true
+    }
+
+    defaults {
+      // publications('mavenJava')
+      publications('uploadToArtifactory')
+      // properties = ['qa.level': 'basic', 'dev.team': 'core']
+      // publishArtifacts = false
+      publishBuildInfo = true
+      publishPom = false
+    }
+  }
+}
+
+// https://docs.gradle.org/current/userguide/publishing_maven.html
+
+publishing {
+
+  publications {
+    uploadToArtifactory(MavenPublication) {
+      // artifactId = 'iketeru'
+      // from components.java
+      artifact file("$projectDir/test-0.0.1.jar")
+    }
+  }
+
+}
